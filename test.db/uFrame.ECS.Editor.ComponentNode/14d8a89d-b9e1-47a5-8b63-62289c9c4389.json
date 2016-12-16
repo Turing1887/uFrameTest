@@ -1,7 +1,7 @@
 {
 	"BlackBoard":false	, 
 	"ComponentId":2	, 
-	"Name":"Health"	, 
+	"Name":"HealthComp"	, 
 	"Order":0	, 
 	"GraphId":"64710783-1311-4120-8e27-bdedd91f71a0"	, 
 	"Identifier":"14d8a89d-b9e1-47a5-8b63-62289c9c4389"	, 

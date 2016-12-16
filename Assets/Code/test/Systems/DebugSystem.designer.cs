@@ -24,28 +24,19 @@ namespace test {
     
     public partial class DebugSystemBase : uFrame.ECS.Systems.EcsSystem {
         
-        private IEcsComponentManagerOf<TestComponentNode> _TestComponentNodeManager;
-        
         private IEcsComponentManagerOf<Orc> _OrcManager;
         
-        private IEcsComponentManagerOf<Sword> _SwordManager;
+        private IEcsComponentManagerOf<TestComponentNode> _TestComponentNodeManager;
         
-        private IEcsComponentManagerOf<Health> _HealthManager;
+        private IEcsComponentManagerOf<SwordComp> _SwordCompManager;
         
-        private IEcsComponentManagerOf<Shield> _ShieldManager;
+        private IEcsComponentManagerOf<HealthComp> _HealthCompManager;
+        
+        private IEcsComponentManagerOf<ShieldComp> _ShieldCompManager;
         
         private DebugSystemclickedHandler DebugSystemclickedHandlerInstance = new DebugSystemclickedHandler();
         
         private DebugSystemGameReadyHandler DebugSystemGameReadyHandlerInstance = new DebugSystemGameReadyHandler();
-        
-        public IEcsComponentManagerOf<TestComponentNode> TestComponentNodeManager {
-            get {
-                return _TestComponentNodeManager;
-            }
-            set {
-                _TestComponentNodeManager = value;
-            }
-        }
         
         public IEcsComponentManagerOf<Orc> OrcManager {
             get {
@@ -56,40 +47,49 @@ namespace test {
             }
         }
         
-        public IEcsComponentManagerOf<Sword> SwordManager {
+        public IEcsComponentManagerOf<TestComponentNode> TestComponentNodeManager {
             get {
-                return _SwordManager;
+                return _TestComponentNodeManager;
             }
             set {
-                _SwordManager = value;
+                _TestComponentNodeManager = value;
             }
         }
         
-        public IEcsComponentManagerOf<Health> HealthManager {
+        public IEcsComponentManagerOf<SwordComp> SwordCompManager {
             get {
-                return _HealthManager;
+                return _SwordCompManager;
             }
             set {
-                _HealthManager = value;
+                _SwordCompManager = value;
             }
         }
         
-        public IEcsComponentManagerOf<Shield> ShieldManager {
+        public IEcsComponentManagerOf<HealthComp> HealthCompManager {
             get {
-                return _ShieldManager;
+                return _HealthCompManager;
             }
             set {
-                _ShieldManager = value;
+                _HealthCompManager = value;
+            }
+        }
+        
+        public IEcsComponentManagerOf<ShieldComp> ShieldCompManager {
+            get {
+                return _ShieldCompManager;
+            }
+            set {
+                _ShieldCompManager = value;
             }
         }
         
         public override void Setup() {
             base.Setup();
-            TestComponentNodeManager = ComponentSystem.RegisterComponent<TestComponentNode>(1);
             OrcManager = ComponentSystem.RegisterGroup<OrcGroup,Orc>();
-            SwordManager = ComponentSystem.RegisterComponent<Sword>(4);
-            HealthManager = ComponentSystem.RegisterComponent<Health>(2);
-            ShieldManager = ComponentSystem.RegisterComponent<Shield>(3);
+            TestComponentNodeManager = ComponentSystem.RegisterComponent<TestComponentNode>(1);
+            SwordCompManager = ComponentSystem.RegisterComponent<SwordComp>(4);
+            HealthCompManager = ComponentSystem.RegisterComponent<HealthComp>(2);
+            ShieldCompManager = ComponentSystem.RegisterComponent<ShieldComp>(3);
             this.OnEvent<test.clicked>().Subscribe(_=>{ DebugSystemclickedFilter(_); }).DisposeWith(this);
             this.OnEvent<uFrame.Kernel.GameReadyEvent>().Subscribe(_=>{ DebugSystemGameReadyFilter(_); }).DisposeWith(this);
         }

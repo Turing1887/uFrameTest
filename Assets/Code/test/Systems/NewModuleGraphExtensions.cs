@@ -23,15 +23,15 @@ static
         
         #region 
 static
-        public uFrame.ECS.APIs.IEcsComponentManagerOf<Sword> SwordManager(this uFrame.ECS.APIs.IEcsSystem system) {
-            return system.ComponentSystem.RegisterComponent<Sword>();
+        public uFrame.ECS.APIs.IEcsComponentManagerOf<SwordComp> SwordCompManager(this uFrame.ECS.APIs.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<SwordComp>();
         }
         #endregion
         
         #region 
 static
-        public uFrame.ECS.APIs.IEcsComponentManagerOf<Health> HealthManager(this uFrame.ECS.APIs.IEcsSystem system) {
-            return system.ComponentSystem.RegisterComponent<Health>();
+        public uFrame.ECS.APIs.IEcsComponentManagerOf<HealthComp> HealthCompManager(this uFrame.ECS.APIs.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<HealthComp>();
         }
         #endregion
         
@@ -44,8 +44,8 @@ static
         
         #region 
 static
-        public uFrame.ECS.APIs.IEcsComponentManagerOf<Shield> ShieldManager(this uFrame.ECS.APIs.IEcsSystem system) {
-            return system.ComponentSystem.RegisterComponent<Shield>();
+        public uFrame.ECS.APIs.IEcsComponentManagerOf<ShieldComp> ShieldCompManager(this uFrame.ECS.APIs.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<ShieldComp>();
         }
         #endregion
         
@@ -58,15 +58,15 @@ static
         
         #region 
 static
-        public List<Sword> SwordComponents(this uFrame.ECS.APIs.IEcsSystem system) {
-            return system.ComponentSystem.RegisterComponent<Sword>().Components;
+        public List<SwordComp> SwordCompComponents(this uFrame.ECS.APIs.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<SwordComp>().Components;
         }
         #endregion
         
         #region 
 static
-        public List<Health> HealthComponents(this uFrame.ECS.APIs.IEcsSystem system) {
-            return system.ComponentSystem.RegisterComponent<Health>().Components;
+        public List<HealthComp> HealthCompComponents(this uFrame.ECS.APIs.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<HealthComp>().Components;
         }
         #endregion
         
@@ -79,8 +79,8 @@ static
         
         #region 
 static
-        public List<Shield> ShieldComponents(this uFrame.ECS.APIs.IEcsSystem system) {
-            return system.ComponentSystem.RegisterComponent<Shield>().Components;
+        public List<ShieldComp> ShieldCompComponents(this uFrame.ECS.APIs.IEcsSystem system) {
+            return system.ComponentSystem.RegisterComponent<ShieldComp>().Components;
         }
         #endregion
         

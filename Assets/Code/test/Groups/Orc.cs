@@ -21,36 +21,36 @@ namespace test {
     [uFrame.Attributes.ComponentId(1)]
     public partial class Orc : uFrame.ECS.Components.GroupItem {
         
-        private Sword _Sword;
+        private SwordComp _SwordComp;
         
-        private Health _Health;
+        private HealthComp _HealthComp;
         
-        private Shield _Shield;
+        private ShieldComp _ShieldComp;
         
-        public Sword Sword {
+        public SwordComp SwordComp {
             get {
-                return _Sword;
+                return _SwordComp;
             }
             set {
-                _Sword = value;
+                _SwordComp = value;
             }
         }
         
-        public Health Health {
+        public HealthComp HealthComp {
             get {
-                return _Health;
+                return _HealthComp;
             }
             set {
-                _Health = value;
+                _HealthComp = value;
             }
         }
         
-        public Shield Shield {
+        public ShieldComp ShieldComp {
             get {
-                return _Shield;
+                return _ShieldComp;
             }
             set {
-                _Shield = value;
+                _ShieldComp = value;
             }
         }
         

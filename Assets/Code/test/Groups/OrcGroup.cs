@@ -22,68 +22,68 @@ namespace test {
     
     public partial class OrcGroup : ReactiveGroup<Orc> {
         
-        private IEcsComponentManagerOf<Sword> _SwordManager;
+        private IEcsComponentManagerOf<SwordComp> _SwordCompManager;
         
-        private IEcsComponentManagerOf<Health> _HealthManager;
+        private IEcsComponentManagerOf<HealthComp> _HealthCompManager;
         
-        private IEcsComponentManagerOf<Shield> _ShieldManager;
+        private IEcsComponentManagerOf<ShieldComp> _ShieldCompManager;
         
         private int lastEntityId;
         
-        private Sword Sword;
+        private SwordComp SwordComp;
         
-        private Health Health;
+        private HealthComp HealthComp;
         
-        private Shield Shield;
+        private ShieldComp ShieldComp;
         
-        public IEcsComponentManagerOf<Sword> SwordManager {
+        public IEcsComponentManagerOf<SwordComp> SwordCompManager {
             get {
-                return _SwordManager;
+                return _SwordCompManager;
             }
             set {
-                _SwordManager = value;
+                _SwordCompManager = value;
             }
         }
         
-        public IEcsComponentManagerOf<Health> HealthManager {
+        public IEcsComponentManagerOf<HealthComp> HealthCompManager {
             get {
-                return _HealthManager;
+                return _HealthCompManager;
             }
             set {
-                _HealthManager = value;
+                _HealthCompManager = value;
             }
         }
         
-        public IEcsComponentManagerOf<Shield> ShieldManager {
+        public IEcsComponentManagerOf<ShieldComp> ShieldCompManager {
             get {
-                return _ShieldManager;
+                return _ShieldCompManager;
             }
             set {
-                _ShieldManager = value;
+                _ShieldCompManager = value;
             }
         }
         
         public override System.Collections.Generic.IEnumerable<UniRx.IObservable<int>> Install(uFrame.ECS.APIs.IComponentSystem componentSystem) {
-            SwordManager = componentSystem.RegisterComponent<Sword>();
-            yield return SwordManager.CreatedObservable.Select(_=>_.EntityId);;
-            yield return SwordManager.RemovedObservable.Select(_=>_.EntityId);;
-            HealthManager = componentSystem.RegisterComponent<Health>();
-            yield return HealthManager.CreatedObservable.Select(_=>_.EntityId);;
-            yield return HealthManager.RemovedObservable.Select(_=>_.EntityId);;
-            ShieldManager = componentSystem.RegisterComponent<Shield>();
-            yield return ShieldManager.CreatedObservable.Select(_=>_.EntityId);;
-            yield return ShieldManager.RemovedObservable.Select(_=>_.EntityId);;
+            SwordCompManager = componentSystem.RegisterComponent<SwordComp>();
+            yield return SwordCompManager.CreatedObservable.Select(_=>_.EntityId);;
+            yield return SwordCompManager.RemovedObservable.Select(_=>_.EntityId);;
+            HealthCompManager = componentSystem.RegisterComponent<HealthComp>();
+            yield return HealthCompManager.CreatedObservable.Select(_=>_.EntityId);;
+            yield return HealthCompManager.RemovedObservable.Select(_=>_.EntityId);;
+            ShieldCompManager = componentSystem.RegisterComponent<ShieldComp>();
+            yield return ShieldCompManager.CreatedObservable.Select(_=>_.EntityId);;
+            yield return ShieldCompManager.RemovedObservable.Select(_=>_.EntityId);;
         }
         
         public override bool Match(int entityId) {
             lastEntityId = entityId;
-            if ((Sword = SwordManager[entityId]) == null) {
+            if ((SwordComp = SwordCompManager[entityId]) == null) {
                 return false;
             }
-            if ((Health = HealthManager[entityId]) == null) {
+            if ((HealthComp = HealthCompManager[entityId]) == null) {
                 return false;
             }
-            if ((Shield = ShieldManager[entityId]) == null) {
+            if ((ShieldComp = ShieldCompManager[entityId]) == null) {
                 return false;
             }
             return true;
@@ -92,9 +92,9 @@ namespace test {
         public override Orc Select() {
             var item = new Orc();;
             item.EntityId = lastEntityId;
-            item.Sword = Sword;
-            item.Health = Health;
-            item.Shield = Shield;
+            item.SwordComp = SwordComp;
+            item.HealthComp = HealthComp;
+            item.ShieldComp = ShieldComp;
             return item;
         }
     }
